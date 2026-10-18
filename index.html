@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Computer Assembly Educational Game</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         SPLASH SCREEN
+    ====================================================== -->
+
+    <section id="splash" class="screen active">
+
+        <div class="splash-content">
+
+            <div class="logo-circle">
+                🖥️
+            </div>
+
+            <h1>COMPUTER ASSEMBLY</h1>
+
+            <h2>EDUCATIONAL GAME</h2>
+
+            <p>
+                Learn • Assemble • Disassemble • Test
+            </p>
+
+            <button onclick="showScreen('main-menu')">
+                START
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAIN MENU
+    ====================================================== -->
+
+    <section id="main-menu" class="screen">
+
+        <div class="menu-container">
+
+            <h1>COMPUTER ASSEMBLY</h1>
+
+            <p class="subtitle">
+                Educational Game
+            </p>
+
+            <button onclick="showScreen('mode-selection')">
+                ▶ PLAY
+            </button>
+
+            <button onclick="showScreen('learn-mode')">
+                📚 LEARN
+            </button>
+
+            <button onclick="showScreen('settings')">
+                ⚙ SETTINGS
+            </button>
+
+            <button onclick="showScreen('about')">
+                ℹ ABOUT / CREDITS
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MODE SELECTION
+    ====================================================== -->
+
+    <section id="mode-selection" class="screen">
+
+        <h1>SELECT MODE</h1>
+
+        <div class="mode-grid">
+
+            <button class="mode-card"
+                    onclick="showScreen('tutorial')">
+
+                <span>📖</span>
+
+                <strong>TUTORIAL</strong>
+
+                <small>
+                    Learn the basic steps
+                </small>
+
+            </button>
+
+
+            <button class="mode-card"
+                    onclick="showScreen('practice-mode')">
+
+                <span>🔧</span>
+
+                <strong>PRACTICE</strong>
+
+                <small>
+                    Practice without a timer
+                </small>
+
+            </button>
+
+
+            <button class="mode-card"
+                    onclick="showScreen('challenge-difficulty')">
+
+                <span>🏆</span>
+
+                <strong>CHALLENGE</strong>
+
+                <small>
+                    Assemble or disassemble under pressure
+                </small>
+
+            </button>
+
+
+            <button class="mode-card"
+                    onclick="startQuiz()">
+
+                <span>🧠</span>
+
+                <strong>QUIZ</strong>
+
+                <small>
+                    Test your knowledge
+                </small>
+
+            </button>
+
+        </div>
+
+        <button class="back-button"
+                onclick="showScreen('main-menu')">
+
+            BACK
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         TUTORIAL
+    ====================================================== -->
+
+    <section id="tutorial" class="screen">
+
+        <h1>TUTORIAL</h1>
+        <p class="tutorial-intro">Learn the safety basics and how to build or take apart a PC.</p>
+
+        <div class="tutorial-box">
+
+            <div class="tutorial-progress" role="progressbar"
+                 aria-label="Tutorial progress"
+                 aria-valuemin="1"
+                 aria-valuemax="5"
+                 aria-valuenow="1">
+                <div id="tutorial-progress-fill"></div>
+            </div>
+
+            <p id="tutorial-step-count" class="tutorial-step-count" aria-live="polite">Step 1 of 5</p>
+
+            <article class="tutorial-step active" data-tutorial-step="0">
+                <div class="tutorial-icon" aria-hidden="true">🧰</div>
+                <h2>Prepare your workspace</h2>
+                <p>Work on a clean, stable surface with enough room to handle each component. Keep small parts together and follow the on-screen instruction for the current step.</p>
+                <div class="tutorial-callout">Take your time. Correct order and safe handling matter more than speed.</div>
+            </article>
+
+            <article class="tutorial-step" data-tutorial-step="1" hidden>
+                <div class="tutorial-icon" aria-hidden="true">🛡️</div>
+                <h2>Equip the wrist strap</h2>
+                <p>Before touching components in either mode, use the <strong>Equip Wrist Strap</strong> button in the Tools panel. It helps reduce electrostatic-discharge risk when handling hardware.</p>
+                <div class="tutorial-callout">The game blocks component actions until the wrist strap is equipped.</div>
+            </article>
+
+            <article class="tutorial-step" data-tutorial-step="2" hidden>
+                <div class="tutorial-icon" aria-hidden="true">🧩</div>
+                <h2>Assemble in order</h2>
+                <p>Choose the component shown in the instruction, then drag it onto its highlighted motherboard slot. Complete each step before moving on; the board updates as parts are installed.</p>
+                <div class="tutorial-callout">Align connectors carefully. Never force a component into a socket or slot.</div>
+            </article>
+
+            <article class="tutorial-step" data-tutorial-step="3" hidden>
+                <div class="tutorial-icon tutorial-tool-image">
+                    <img src="assets/images/screwdriver.png" alt="Screwdriver">
+                </div>
+                <h2>Use the screwdriver for screws</h2>
+                <p>Equip the screwdriver before installing or removing screws. This also applies to the small retaining screw for the M.2 SSD.</p>
+                <div class="tutorial-callout">The screwdriver is only needed for screw-related steps; the wrist strap is required for every component.</div>
+            </article>
+
+            <article class="tutorial-step" data-tutorial-step="4" hidden>
+                <div class="tutorial-icon" aria-hidden="true">🔄</div>
+                <h2>Disassemble in reverse</h2>
+                <p>Disassembly starts with the last parts installed. Follow the highlighted motherboard location and select the component the instructions ask you to remove.</p>
+                <div class="tutorial-callout">Equip the wrist strap before handling parts, and the screwdriver before removing screws.</div>
+            </article>
+
+            <div class="tutorial-controls">
+                <button id="tutorial-previous" type="button" class="tutorial-nav-button" disabled>PREVIOUS</button>
+                <button id="tutorial-next" type="button" class="tutorial-nav-button">NEXT</button>
+            </div>
+
+            <div id="tutorial-practice-actions" class="tutorial-practice-actions" hidden>
+                <button type="button" onclick="startAssembly('practice')">TRY ASSEMBLY</button>
+                <button type="button" onclick="startDisassembly('practice')">TRY DISASSEMBLY</button>
+            </div>
+        </div>
+
+        <button class="back-button"
+                onclick="showScreen('mode-selection')">
+
+            BACK TO MODES
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         LEARN MODE
+    ====================================================== -->
+
+    <section id="learn-mode" class="screen">
+
+        <h1>LEARN MODE</h1>
+
+        <div class="learn-layout">
+
+            <div class="learn-preview">
+
+                <div class="learn-image-container">
+
+                    <img id="learn-main-image"
+                         src="assets/images/motherboard.png"
+                         alt="Motherboard">
+
+                </div>
+
+                <span id="learn-category" class="learn-category">
+                    HARDWARE
+                </span>
+
+                <h2 id="learn-title">
+                    Motherboard
+                </h2>
+
+                <p id="learn-description">
+                    The motherboard is the main circuit
+                    board that connects the major components
+                    of a computer.
+                </p>
+
+                <dl class="learn-facts">
+                    <div>
+                        <dt>WHAT IT DOES</dt>
+                        <dd id="learn-function">Connects the major computer components.</dd>
+                    </div>
+                    <div>
+                        <dt>WHERE IT GOES</dt>
+                        <dd id="learn-location">Inside the case; other components connect to it.</dd>
+                    </div>
+                </dl>
+
+                <p class="learn-tip">
+                    <strong>ASSEMBLY TIP</strong>
+                    <span id="learn-tip">Handle the board by its edges and align it with the case standoffs.</span>
+                </p>
+
+            </div>
+
+
+            <div class="learn-list">
+
+                <div class="learn-tools">
+                    <label class="learn-search-label" for="learn-search">Find a component</label>
+                    <input id="learn-search"
+                           class="learn-search"
+                           type="search"
+                           placeholder="Search components..."
+                           autocomplete="off">
+
+                    <div class="learn-filters" role="group" aria-label="Filter components by category">
+                        <button class="learn-filter active"
+                                type="button"
+                                data-learn-filter="all"
+                                aria-pressed="true">All</button>
+                        <button class="learn-filter"
+                                type="button"
+                                data-learn-filter="hardware"
+                                aria-pressed="false">Hardware</button>
+                        <button class="learn-filter"
+                                type="button"
+                                data-learn-filter="cables"
+                                aria-pressed="false">Cables</button>
+                        <button class="learn-filter"
+                                type="button"
+                                data-learn-filter="tools"
+                                aria-pressed="false">Tools &amp; Safety</button>
+                    </div>
+
+                    <p id="learn-results-count" class="learn-results-count" aria-live="polite">
+                        Showing 22 components
+                    </p>
+                </div>
+
+                <h3 data-learn-heading="hardware">HARDWARE</h3>
+
+                <div class="component-grid" data-learn-category="hardware">
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="motherboard"
+                            aria-pressed="true"
+                            onclick="showLearnComponent('motherboard')">
+
+                        <img src="assets/images/motherboard.png" alt="">
+
+                        <span>Motherboard</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="cpu"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('cpu')">
+
+                        <img src="assets/images/cpu.png" alt="">
+
+                        <span>CPU</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="ram"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('ram')">
+
+                        <img src="assets/images/ram.png" alt="">
+
+                        <span>RAM</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="cpu-cooler"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('cpu-cooler')">
+
+                        <img src="assets/images/cpu-cooler.png" alt="">
+
+                        <span>CPU Cooler</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="gpu"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('gpu')">
+
+                        <img src="assets/images/gpu.png" alt="">
+
+                        <span>GPU</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="psu"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('psu')">
+
+                        <img src="assets/images/psu.png" alt="">
+
+                        <span>PSU</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="ssd"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('ssd')">
+
+                        <img src="assets/images/ssd.png" alt="">
+
+                        <span>SSD</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="hdd"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('hdd')">
+
+                        <img src="assets/images/hdd.png" alt="">
+
+                        <span>HDD</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="case-fan"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('case-fan')">
+
+                        <img src="assets/images/case-fan.png" alt="">
+
+                        <span>Case Fan</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="cmos-battery"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('cmos-battery')">
+
+                        <img src="assets/images/cmos-battery.png" alt="">
+
+                        <span>CMOS Battery</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="pc-case"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('pc-case')">
+
+                        <img src="assets/images/pc-case.png" alt="">
+
+                        <span>PC Case</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="m2-ssd"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('m2-ssd')">
+
+                        <img src="assets/images/m2-ssd.png" alt="">
+
+                        <span>M.2 SSD</span>
+
+                    </button>
+
+                </div>
+
+
+                <h3 data-learn-heading="cables">CABLES</h3>
+
+                <div class="component-grid" data-learn-category="cables">
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="24-pins"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('24-pins')">
+
+                        <img src="assets/images/24-pins.png" alt="">
+
+                        <span>24-Pin</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="8-pins"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('8-pins')">
+
+                        <img src="assets/images/8-pins.png" alt="">
+
+                        <span>8-Pin CPU</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="sata-data-cable"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('sata-data-cable')">
+
+                        <img src="assets/images/sata-data-cable.png" alt="">
+
+                        <span>SATA Data</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="sata-power-cable"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('sata-power-cable')">
+
+                        <img src="assets/images/sata-power-cable.png" alt="">
+
+                        <span>SATA Power</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="front-panel"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('front-panel')">
+
+                        <img src="assets/images/Front-panel-connectors.png" alt="">
+
+                        <span>Front Panel</span>
+
+                    </button>
+
+                </div>
+
+
+                <h3 data-learn-heading="tools">TOOLS &amp; SAFETY</h3>
+
+                <div class="component-grid" data-learn-category="tools">
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="screwdriver"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('screwdriver')">
+
+                        <img src="assets/images/screwdriver.png" alt="">
+
+                        <span>Screwdriver</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="screw"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('screw')">
+
+                        <img src="assets/images/screw.png" alt="">
+
+                        <span>Screw</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="thermal-paste"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('thermal-paste')">
+
+                        <img src="assets/images/thermal-paste.png" alt="">
+
+                        <span>Thermal Paste</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="esd-wrist-strap"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('esd-wrist-strap')">
+
+                        <img src="assets/images/esd-wrist-strap.png" alt="">
+
+                        <span>ESD Wrist Strap</span>
+
+                    </button>
+
+
+                    <button class="learn-card"
+                            type="button"
+                            data-component="anti-static-mat"
+                            aria-pressed="false"
+                            onclick="showLearnComponent('anti-static-mat')">
+
+                        <img src="assets/images/anti-static-mat.png" alt="">
+
+                        <span>Anti-Static Mat</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <button class="back-button"
+                onclick="showScreen('main-menu')">
+
+            BACK
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         PRACTICE MODE
+    ====================================================== -->
+
+    <section id="practice-mode" class="screen">
+
+        <h1>PRACTICE MODE</h1>
+
+        <p>
+            Choose what you want to practice.
+        </p>
+
+        <div class="mode-grid">
+
+            <button class="mode-card"
+                    onclick="startAssembly('practice')">
+
+                <span>🔧</span>
+
+                <strong>ASSEMBLY</strong>
+
+                <small>
+                    Build the computer
+                </small>
+
+            </button>
+
+
+            <button class="mode-card"
+                    onclick="startDisassembly('practice')">
+
+                <span>🛠️</span>
+
+                <strong>DISASSEMBLY</strong>
+
+                <small>
+                    Take the computer apart
+                </small>
+
+            </button>
+
+        </div>
+
+        <button class="back-button"
+                onclick="showScreen('mode-selection')">
+
+            BACK
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         CHALLENGE DIFFICULTY
+    ====================================================== -->
+
+    <section id="challenge-difficulty" class="screen">
+
+        <h1>CHALLENGE</h1>
+
+        <p>
+            Select your difficulty.
+        </p>
+
+        <div class="difficulty-grid">
+
+            <button onclick="selectChallengeDifficulty('easy')">
+
+                <strong>EASY</strong>
+
+                <small>
+                    5-minute timer · one labeled slot at a time
+                </small>
+
+            </button>
+
+
+            <button onclick="selectChallengeDifficulty('hard')">
+
+                <strong>HARD</strong>
+
+                <small>
+                    5-minute timer · slots stay hidden until you drag
+                </small>
+
+            </button>
+
+        </div>
+
+        <button class="back-button"
+                onclick="showScreen('mode-selection')">
+
+            BACK
+
+        </button>
+
+    </section>
+
+    <section id="challenge-mode-selection" class="screen">
+
+        <h1>CHALLENGE MODE</h1>
+
+        <p>
+            Choose what you want to do.
+        </p>
+
+        <div class="mode-grid">
+
+            <button class="mode-card"
+                    type="button"
+                    onclick="startChallenge('assembly')">
+
+                <span>🔧</span>
+
+                <strong>ASSEMBLY</strong>
+
+                <small>
+                    Build the computer against the clock
+                </small>
+
+            </button>
+
+            <button class="mode-card"
+                    type="button"
+                    onclick="startChallenge('disassembly')">
+
+                <span>🛠️</span>
+
+                <strong>DISASSEMBLY</strong>
+
+                <small>
+                    Take the computer apart against the clock
+                </small>
+
+            </button>
+
+        </div>
+
+        <button class="back-button"
+                type="button"
+                onclick="showScreen('challenge-difficulty')">
+            BACK
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         ASSEMBLY MODE
+    ====================================================== -->
+
+    <section id="assembly"
+             class="screen game-screen">
+
+        <div class="game-header">
+
+            <div>
+
+                <h1 id="assembly-title">
+                    ASSEMBLY MODE
+                </h1>
+
+                <p id="assembly-instruction">
+                    Place the correct component.
+                </p>
+
+                <p id="assembly-tip"
+                   class="gameplay-tip"
+                   aria-live="polite">
+                </p>
+
+            </div>
+
+
+            <div class="game-stats">
+
+                <span>
+                    STEP:
+                    <strong id="assembly-step">
+                        1
+                    </strong>
+                    /
+                    <strong id="assembly-total">
+                        10
+                    </strong>
+                </span>
+
+                <span>
+                    SCORE:
+                    <strong id="assembly-score">
+                        0
+                    </strong>
+                </span>
+
+                <span>
+                    MISSES:
+                    <strong id="assembly-mistakes">
+                        0
+                    </strong>
+                </span>
+
+                <span id="assembly-timer-box">
+                    TIME:
+                    <strong id="assembly-timer">
+                        05:00
+                    </strong>
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="challenge-progress"
+             role="progressbar"
+             aria-label="Assembly progress"
+             aria-valuemin="0"
+             aria-valuemax="10"
+             aria-valuenow="0">
+
+            <div id="assembly-progress"
+                 class="challenge-progress-fill">
+            </div>
+
+            <span id="assembly-progress-label"
+                  class="challenge-progress-label">
+                0 of 10 steps complete
+            </span>
+
+        </div>
+
+        <div class="assembly-game">
+
+            <div class="pc-area">
+
+                <!-- =================================================
+                     BOARD CANVAS
+                     IMAGE + TARGETS ARE NOW IN THE SAME CONTAINER
+                ================================================== -->
+
+                <div class="pc-board">
+
+                    <div class="board-canvas">
+
+                        <img id="assembly-board-image"
+                             src="assets/images/mobo.png"
+                             class="board-image"
+                             alt="Empty motherboard">
+
+
+                        <!-- ===============================
+                             TARGET ZONES
+                        ================================ -->
+
+                        <div id="target-cpu"
+                             class="target-zone"
+                             data-component="cpu">
+
+                            CPU
+
+                        </div>
+
+
+                        <div id="target-thermal"
+                             class="target-zone"
+                             data-component="thermal-paste">
+
+                            THERMAL PASTE
+
+                        </div>
+
+
+                        <div id="target-cooler"
+                             class="target-zone"
+                             data-component="cpu-cooler">
+
+                            CPU COOLER
+
+                        </div>
+
+
+                        <div id="target-ram"
+                             class="target-zone"
+                             data-component="ram">
+
+                            RAM
+
+                        </div>
+
+
+                        <div id="target-storage"
+                             class="target-zone"
+                             data-component="m2-ssd">
+
+                            M.2 SSD
+
+                        </div>
+
+
+                        <div id="target-gpu"
+                             class="target-zone"
+                             data-component="gpu">
+
+                            GPU
+
+                        </div>
+
+
+                        <div id="target-fan"
+                             class="target-zone"
+                             data-component="case-fan-cable">
+
+                            FAN HEADER
+
+                        </div>
+
+
+                        <div id="target-24pin"
+                             class="target-zone"
+                             data-component="24-pins">
+
+                            24-PIN
+
+                        </div>
+
+
+                        <div id="target-8pin"
+                             class="target-zone"
+                             data-component="8-pins">
+
+                            8-PIN
+
+                        </div>
+
+
+                        <div id="target-sata"
+                             class="target-zone"
+                             data-component="sata-data-cable">
+
+                            SATA
+
+                        </div>
+
+
+                        <div id="target-front"
+                             class="target-zone"
+                             data-component="front-panel">
+
+                            FRONT PANEL
+
+                        </div>
+
+
+                        <div id="target-screw"
+                             class="target-zone"
+                             data-component="screw">
+
+                            SCREWS
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 COMPONENT SELECTION
+            ================================================== -->
+
+            <div class="parts-panel">
+
+                <div class="parts-panel-heading">
+                    <div>
+                        <span class="parts-panel-kicker">ASSEMBLY WORKBENCH</span>
+                        <h2>Choose a component</h2>
+                    </div>
+                    <span id="assembly-panel-step" class="parts-panel-step">01 / 10</span>
+                </div>
+
+                <p class="parts-panel-instruction">Select the component for the highlighted motherboard location.</p>
+
+                <div class="tool-equipment">
+                    <h3>TOOLS</h3>
+                    <p class="tool-help">Wrist strap required · screwdriver only for M.2 and screws; unequip it for other components.</p>
+                    <button class="tool-equip-button"
+                            type="button"
+                            data-tool="esd-wrist-strap"
+                            aria-pressed="false">
+                        <img src="assets/images/esd-wrist-strap.png" alt="">
+                        <span>Equip Wrist Strap</span>
+                    </button>
+                    <button class="tool-equip-button"
+                            type="button"
+                            data-tool="screwdriver"
+                            aria-pressed="false">
+                        <img src="assets/images/screwdriver.png" alt="">
+                        <span>Equip Screwdriver</span>
+                    </button>
+                    <p id="assembly-tool-status"
+                       class="tool-status"
+                       aria-live="polite">No tools equipped.</p>
+                </div>
+
+                <div id="assembly-parts"
+                     class="parts-grid">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button class="back-button"
+                onclick="leaveGame()">
+
+            EXIT
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         DISASSEMBLY MODE
+    ====================================================== -->
+
+    <section id="disassembly"
+             class="screen game-screen">
+
+        <div class="game-header">
+
+            <div>
+
+                <h1 id="disassembly-title">
+                    DISASSEMBLY MODE
+                </h1>
+
+                <p id="disassembly-instruction">
+                    Remove the correct component.
+                </p>
+
+                <p id="disassembly-tip"
+                   class="gameplay-tip"
+                   aria-live="polite">
+                </p>
+
+            </div>
+
+
+            <div class="game-stats">
+
+                <span>
+                    STEP:
+                    <strong id="disassembly-step">
+                        1
+                    </strong>
+                    /
+                    <strong id="disassembly-total">
+                        10
+                    </strong>
+                </span>
+
+                <span>
+                    SCORE:
+                    <strong id="disassembly-score">
+                        0
+                    </strong>
+                </span>
+
+                <span>
+                    MISSES:
+                    <strong id="disassembly-mistakes">
+                        0
+                    </strong>
+                </span>
+
+                <span id="disassembly-timer-box">
+                    TIME:
+                    <strong id="disassembly-timer">
+                        05:00
+                    </strong>
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="challenge-progress"
+             role="progressbar"
+             aria-label="Disassembly progress"
+             aria-valuemin="0"
+             aria-valuemax="10"
+             aria-valuenow="0">
+
+            <div id="disassembly-progress"
+                 class="challenge-progress-fill">
+            </div>
+
+            <span id="disassembly-progress-label"
+                  class="challenge-progress-label">
+                0 of 10 steps complete
+            </span>
+
+        </div>
+
+        <div class="disassembly-game">
+
+            <div class="pc-area">
+
+                <div class="pc-board assembled-board">
+
+                    <div class="board-canvas">
+
+                        <img id="disassembly-board-image"
+                             src="assets/images/mobo v10.png"
+                             class="board-image"
+                             alt="Completed motherboard assembly">
+
+                        <div class="target-zone disassembly-target target-hidden"
+                             data-component="cpu"
+                             aria-hidden="true">CPU</div>
+                        <div class="target-zone disassembly-target target-hidden"
+                             data-component="thermal-paste"
+                             aria-hidden="true">THERMAL PASTE</div>
+                        <div class="target-zone disassembly-target target-hidden"
+                             data-component="cpu-cooler"
+                             aria-hidden="true">CPU COOLER</div>
+                        <div class="target-zone disassembly-target target-hidden"
+                             data-component="ram"
+                             aria-hidden="true">RAM</div>
+                        <div class="target-zone disassembly-target target-hidden"
+                             data-component="m2-ssd"
+                             aria-hidden="true">M.2 SSD</div>
+                        <div class="target-zone disassembly-target target-hidden"
+                             data-component="gpu"
+                             aria-hidden="true">GPU</div>
+                        <div class="target-zone disassembly-target target-hidden"
+                             data-component="24-pins"
+                             aria-hidden="true">24-PIN</div>
+                        <div class="target-zone disassembly-target target-hidden"
+                             data-component="8-pins"
+                             aria-hidden="true">8-PIN</div>
+                        <div class="target-zone disassembly-target target-hidden"
+                             data-component="front-panel"
+                             aria-hidden="true">FRONT PANEL</div>
+                        <div class="target-zone disassembly-target target-hidden"
+                             data-component="screw"
+                             aria-hidden="true">SCREWS</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="parts-panel">
+
+                <div class="parts-panel-heading">
+                    <div>
+                        <span class="parts-panel-kicker">DISASSEMBLY WORKBENCH</span>
+                        <h2>Removed components</h2>
+                    </div>
+                    <span id="disassembly-panel-step" class="parts-panel-step">01 / 10</span>
+                </div>
+
+                <p class="parts-panel-instruction">Drag the highlighted component from the motherboard into this area.</p>
+
+                <div class="tool-equipment">
+                    <h3>TOOLS</h3>
+                    <p class="tool-help">Wrist strap required · screwdriver only for M.2 and screws; unequip it for other components.</p>
+                    <button class="tool-equip-button"
+                            type="button"
+                            data-tool="esd-wrist-strap"
+                            aria-pressed="false">
+                        <img src="assets/images/esd-wrist-strap.png" alt="">
+                        <span>Equip Wrist Strap</span>
+                    </button>
+                    <button class="tool-equip-button"
+                            type="button"
+                            data-tool="screwdriver"
+                            aria-pressed="false">
+                        <img src="assets/images/screwdriver.png" alt="">
+                        <span>Equip Screwdriver</span>
+                    </button>
+                    <p id="disassembly-tool-status"
+                       class="tool-status"
+                       aria-live="polite">No tools equipped.</p>
+                </div>
+
+                <div id="disassembly-parts"
+                     class="parts-grid">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button class="back-button"
+                onclick="leaveGame()">
+
+            EXIT
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         RESULTS
+    ====================================================== -->
+
+    <section id="results" class="screen">
+
+        <h1>RESULTS</h1>
+
+        <div class="results-box">
+
+            <div class="result-icon">
+                🏆
+            </div>
+
+            <h2 id="result-title">
+                GREAT JOB!
+            </h2>
+
+            <p>
+                Score:
+                <strong id="final-score">
+                    0
+                </strong>
+            </p>
+
+            <p>
+                Correct:
+                <strong id="final-correct">
+                    0
+                </strong>
+            </p>
+
+            <p>
+                Mistakes:
+                <strong id="final-mistakes">
+                    0
+                </strong>
+            </p>
+
+        </div>
+
+        <button onclick="showScreen('mode-selection')">
+            PLAY AGAIN
+        </button>
+
+        <button onclick="showScreen('main-menu')">
+            MAIN MENU
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         QUIZ
+    ====================================================== -->
+
+    <section id="quiz" class="screen">
+
+        <div class="quiz-header">
+
+            <h1>QUIZ MODE</h1>
+
+            <p>
+                Question
+                <strong id="quiz-number">
+                    1
+                </strong>
+                /
+                <strong id="quiz-total">
+                    20
+                </strong>
+            </p>
+
+            <p>
+                Score:
+                <strong id="quiz-score">
+                    0
+                </strong>
+            </p>
+
+            <p id="quiz-timer">
+                Time: Unlimited
+            </p>
+
+        </div>
+
+
+        <div class="quiz-box">
+
+            <h2 id="quiz-question">
+                Question
+            </h2>
+
+            <div id="quiz-options"
+                 class="quiz-options">
+
+            </div>
+
+            <div id="quiz-feedback"
+                 class="quiz-feedback"
+                 role="status"
+                 aria-live="polite"
+                 hidden>
+
+                <p id="quiz-explanation"></p>
+
+                <button id="quiz-next"
+                        type="button">
+                    NEXT QUESTION
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section id="about" class="screen">
+
+        <h1>ABOUT / CREDITS</h1>
+
+        <div class="about-box">
+
+            <p>
+                <strong>
+                    Computer Assembly and Disassembly
+                    Educational Game
+                </strong>
+            </p>
+
+            <p>
+                This educational game was developed as
+                part of a research project.
+            </p>
+
+            <p>
+                The game is designed to help students
+                become familiar with computer hardware,
+                assembly procedures, and disassembly
+                procedures.
+            </p>
+
+            <p>
+                Developed by:
+                <strong>Research Group</strong>
+            </p>
+
+        </div>
+
+        <button class="back-button"
+                onclick="showScreen('main-menu')">
+
+            BACK
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         SETTINGS
+    ====================================================== -->
+
+    <section id="settings" class="screen">
+
+        <h1>SETTINGS</h1>
+
+        <div class="settings-box">
+
+            <label>
+                Sound
+
+                <input type="range"
+                       min="0"
+                       max="100"
+                       value="80">
+            </label>
+
+            <label>
+                Music
+
+                <input type="range"
+                       id="music-volume"
+                       min="0"
+                       max="100"
+                       value="60">
+                <output id="music-volume-value" for="music-volume">60%</output>
+            </label>
+
+        </div>
+
+        <button class="back-button"
+                onclick="showScreen('main-menu')">
+
+            BACK
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <audio id="background-music" preload="none" loop>
+        <source src="assets/music/background.wav" type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

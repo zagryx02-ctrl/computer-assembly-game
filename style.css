@@ -1,0 +1,2158 @@
+/* =========================================
+   COMPUTER ASSEMBLY EDUCATIONAL GAME
+   STYLE SHEET
+========================================= */
+
+
+/* =========================================
+   GENERAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top, #243b55, #101820 70%);
+    color: white;
+    min-height: 100vh;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+
+/* =========================================
+   SCREENS
+========================================= */
+
+.screen {
+    display: none;
+
+    min-height: 100vh;
+
+    padding: 30px;
+
+    text-align: center;
+
+    animation: fadeIn 0.25s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   HEADINGS
+========================================= */
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+h2 {
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: #aebdca;
+    margin-bottom: 35px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button {
+    background: #1976d2;
+    color: white;
+
+    padding: 14px 25px;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transition:
+        transform 0.15s,
+        background 0.15s,
+        box-shadow 0.15s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    background: #2196f3;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* Icon surface styling: keep the icon visible without a solid fill */
+.logo-circle,
+.mode-card,
+.learn-card,
+.tutorial-icon,
+.result-icon {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.mode-card:hover,
+.learn-card:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.mode-card,
+.learn-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.learn-card img,
+.learn-image-container img,
+.mode-card span,
+.logo-circle {
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.25));
+}
+
+.back-button {
+    margin-top: 25px;
+
+    background: #455a64;
+}
+
+.back-button:hover {
+    background: #607d8b;
+}
+
+
+/* =========================================
+   SPLASH
+========================================= */
+
+.splash-content {
+    max-width: 700px;
+
+    margin: auto;
+
+    padding-top: 15vh;
+}
+
+.logo-circle {
+    width: 130px;
+    height: 130px;
+
+    margin: auto;
+    margin-bottom: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    font-size: 65px;
+
+    box-shadow: none;
+}
+
+.splash-content h1 {
+    font-size: 45px;
+}
+
+.splash-content h2 {
+    color: #90caf9;
+    margin-bottom: 20px;
+}
+
+.splash-content p {
+    color: #b0bec5;
+    margin-bottom: 35px;
+}
+
+
+/* =========================================
+   MAIN MENU
+========================================= */
+
+.menu-container {
+    max-width: 500px;
+
+    margin: auto;
+
+    padding-top: 10vh;
+}
+
+.menu-container button {
+    display: block;
+
+    width: 100%;
+
+    margin: 15px 0;
+
+    font-size: 18px;
+}
+
+
+/* =========================================
+   MODE GRID
+========================================= */
+
+.mode-grid {
+    max-width: 850px;
+
+    margin: 40px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.mode-card {
+    min-height: 180px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    background: transparent !important;
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+}
+
+.mode-card span {
+    font-size: 45px;
+}
+
+.mode-card strong {
+    font-size: 22px;
+}
+
+.mode-card small {
+    color: #b0bec5;
+}
+
+
+/* =========================================
+   TUTORIAL
+========================================= */
+
+.tutorial-box,
+.about-box,
+.settings-box {
+    max-width: 700px;
+
+    margin: 40px auto;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,0.08);
+}
+
+.tutorial-box p,
+.about-box p {
+    margin: 15px 0;
+
+    line-height: 1.6;
+
+    color: #cfd8dc;
+}
+
+.tutorial-icon {
+    font-size: 70px;
+
+    margin-bottom: 20px;
+}
+
+.tutorial-intro {
+    margin: 0 auto;
+    color: #b0bec5;
+}
+
+.tutorial-box {
+    max-width: 760px;
+    min-height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tutorial-progress {
+    height: 8px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+#tutorial-progress-fill {
+    width: 20%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #42a5f5, #80cbc4);
+    transition: width 0.25s ease;
+}
+
+.tutorial-step-count {
+    margin: 0 0 12px !important;
+    color: #90caf9 !important;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.tutorial-step[hidden],
+.tutorial-controls [hidden],
+.tutorial-practice-actions[hidden] {
+    display: none;
+}
+
+.tutorial-step h2 {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.tutorial-step p {
+    max-width: 590px;
+    margin: 0 auto 15px;
+}
+
+.tutorial-icon {
+    margin-bottom: 10px;
+}
+
+.tutorial-tool-image img {
+    width: min(220px, 70vw);
+    height: 110px;
+    object-fit: contain;
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.35));
+}
+
+.tutorial-callout {
+    max-width: 590px;
+    margin: 16px auto 0;
+    padding: 13px 16px;
+    border-left: 3px solid #64b5f6;
+    border-radius: 0 8px 8px 0;
+    background: rgba(100, 181, 246, 0.1);
+    color: #e3f2fd;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.tutorial-controls,
+.tutorial-practice-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.tutorial-nav-button {
+    min-width: 150px;
+}
+
+.tutorial-nav-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.tutorial-practice-actions button + button {
+    background: #455a64;
+}
+
+@media (max-width: 600px) {
+    .tutorial-box {
+        min-height: 0;
+        margin: 25px auto;
+        padding: 22px 18px;
+    }
+
+    .tutorial-step h2 {
+        font-size: 23px;
+    }
+
+    .tutorial-nav-button,
+    .tutorial-practice-actions button {
+        width: 100%;
+    }
+}
+
+
+/* =========================================
+   LEARN MODE
+========================================= */
+
+.learn-layout {
+    max-width: 1360px;
+
+    margin: 30px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(320px, 0.78fr) minmax(0, 1.6fr);
+
+    gap: 30px;
+
+    text-align: left;
+    align-items: start;
+}
+
+.learn-preview {
+    position: sticky;
+
+    top: 20px;
+
+    height: fit-content;
+
+    padding: 24px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035));
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+}
+
+.learn-image-container {
+    height: 270px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: -8px -8px 10px;
+
+    border-radius: 16px;
+
+    background: radial-gradient(ellipse at center, rgba(79, 195, 247, 0.11), transparent 68%);
+}
+
+.learn-image-container img {
+    max-width: 94%;
+    max-height: 250px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 12px 20px rgba(0,0,0,0.3));
+
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.learn-category {
+    display: inline-block;
+
+    margin-bottom: 10px;
+    padding: 5px 10px;
+
+    border: 1px solid rgba(79, 195, 247, 0.28);
+    border-radius: 999px;
+
+    background: rgba(79, 195, 247, 0.1);
+
+    color: #90caf9;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+}
+
+.learn-preview h2 {
+    margin-bottom: 10px;
+}
+
+.learn-preview p {
+    color: #cfd8dc;
+
+    line-height: 1.5;
+}
+
+.learn-facts {
+    display: grid;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+    text-align: left;
+}
+
+.learn-facts > div {
+    padding: 12px 14px;
+
+    border-left: 3px solid rgba(79, 195, 247, 0.7);
+    border-radius: 0 10px 10px 0;
+
+    background: rgba(0, 0, 0, 0.16);
+}
+
+.learn-facts dt,
+.learn-tip strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #90caf9;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+}
+
+.learn-facts dd {
+    color: #e1eaf0;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.learn-tip {
+    margin-top: 12px;
+    padding: 14px;
+
+    border: 1px solid rgba(255, 183, 77, 0.22);
+    border-radius: 12px;
+
+    background: rgba(255, 183, 77, 0.07);
+
+    color: #ffe0b2 !important;
+    text-align: left;
+}
+
+.learn-tip strong {
+    color: #ffcc80;
+}
+
+.learn-tools {
+    margin-bottom: 24px;
+}
+
+.learn-search-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #e1eaf0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.learn-search {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 10px;
+    outline: none;
+
+    background: rgba(0, 0, 0, 0.2);
+
+    color: white;
+    font: inherit;
+}
+
+.learn-search::placeholder {
+    color: #9eacb8;
+}
+
+.learn-search:focus-visible {
+    border-color: #64b5f6;
+    box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.2);
+}
+
+.learn-filters {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 12px;
+}
+
+.learn-filter {
+    padding: 8px 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+
+    background: transparent !important;
+    box-shadow: none !important;
+
+    color: #cfd8dc;
+    font-size: 13px;
+}
+
+.learn-filter:hover,
+.learn-filter.active {
+    border-color: rgba(79, 195, 247, 0.55);
+
+    background: rgba(79, 195, 247, 0.12) !important;
+    box-shadow: none !important;
+
+    color: #b3e5fc;
+}
+
+.learn-results-count {
+    margin-top: 10px;
+
+    color: #9eacb8;
+    font-size: 13px;
+}
+
+.learn-list {
+    padding: 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+
+    background:
+        rgba(0,0,0,0.12);
+}
+
+.learn-list h3 {
+    margin:
+        20px 0 15px;
+
+    color: #90caf9;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+}
+
+.learn-list h3:first-of-type {
+    margin-top: 0;
+}
+
+.component-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(125px, 1fr));
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.component-grid[hidden],
+.learn-list h3[hidden],
+.learn-card[hidden] {
+    display: none;
+}
+
+.learn-card {
+    min-height: 145px;
+
+    padding: 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    background: transparent !important;
+
+    border:
+        1px solid rgba(255,255,255,0.11);
+
+    color: #eaf3f8;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.learn-card:hover,
+.learn-card:focus-visible,
+.learn-card.selected {
+    border-color: rgba(79, 195, 247, 0.65);
+
+    background: rgba(79, 195, 247, 0.08) !important;
+
+    box-shadow: inset 0 0 0 1px rgba(79, 195, 247, 0.16) !important;
+}
+
+.learn-card:focus-visible {
+    outline: 2px solid #64b5f6;
+    outline-offset: 2px;
+}
+
+.learn-card img {
+    width: 82px;
+    height: 82px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
+}
+
+.learn-card span {
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+
+/* =========================================
+   DIFFICULTY
+========================================= */
+
+.difficulty-grid {
+    max-width: 700px;
+
+    margin: 50px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+.difficulty-grid button {
+    min-height: 180px;
+
+    background:
+        rgba(255,255,255,0.08);
+}
+
+.difficulty-grid strong {
+    display: block;
+
+    font-size: 28px;
+
+    margin-bottom: 15px;
+}
+
+.difficulty-grid small {
+    color: #cfd8dc;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================
+   GAME HEADER
+========================================= */
+
+.game-screen {
+    padding: 20px;
+}
+
+.game-header {
+    max-width: 1300px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    text-align: left;
+}
+
+.game-header h1 {
+    font-size: 30px;
+}
+
+.game-header p {
+    color: #b0bec5;
+}
+
+.game-header .gameplay-tip {
+    max-width: 680px;
+
+    margin-top: 10px;
+    padding: 10px 13px;
+
+    border-left: 3px solid #4fc3f7;
+    border-radius: 0 8px 8px 0;
+
+    background: rgba(79, 195, 247, 0.09);
+
+    color: #c8e7f3;
+
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.game-stats {
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+}
+
+.game-stats span {
+    background:
+        rgba(255,255,255,0.08);
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+}
+
+.game-stats #assembly-timer-box.timer-warning,
+.game-stats #disassembly-timer-box.timer-warning {
+    color: #ff8a80;
+
+    background: rgba(198, 40, 40, 0.28);
+
+    animation: timer-pulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes timer-pulse {
+    to {
+        box-shadow: 0 0 16px rgba(244, 67, 54, 0.38);
+    }
+}
+
+.challenge-progress {
+    position: relative;
+
+    max-width: 1300px;
+    height: 30px;
+
+    margin: 14px auto 0;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.challenge-progress-fill {
+    width: 0;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: linear-gradient(90deg, #0288d1, #4fc3f7);
+
+    transition: width 0.35s ease;
+}
+
+.challenge-progress-label {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+/* =========================================
+   ASSEMBLY / DISASSEMBLY LAYOUT
+========================================= */
+
+.assembly-game,
+.disassembly-game {
+    max-width: 1300px;
+
+    margin: 25px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 360px;
+
+    gap: 25px;
+
+    align-items: start;
+}
+
+
+/* =========================================
+   PC AREA
+========================================= */
+
+.pc-area {
+    min-height: 650px;
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    align-items: center;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(0,0,0,0.2);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   PC BOARD
+========================================= */
+
+.pc-board {
+    position: relative;
+
+    width: min(750px, 100%);
+
+    aspect-ratio: 16 / 10;
+
+    flex-shrink: 0;
+
+    overflow: visible;
+}
+
+
+/*
+   The PNG's transparent margins are excluded from this
+   canvas so target percentages map to the visible board.
+*/
+.board-canvas {
+    position: absolute;
+
+    top: 0.3%;
+    left: 22.1%;
+
+    width: 56.5%;
+    height: 92.4%;
+}
+
+.board-image {
+    position: absolute;
+
+    top: -2.9%;
+
+    left: -33.6%;
+
+    width: 166.1%;
+    height: auto;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+.board-image.board-state-changing {
+    animation: board-state-update 0.28s ease-out;
+}
+
+@keyframes board-state-update {
+    from {
+        opacity: 0.55;
+        filter: brightness(1.35);
+    }
+
+    to {
+        opacity: 1;
+        filter: brightness(1);
+    }
+}
+
+
+/* =========================================
+   TARGET ZONES
+========================================= */
+
+.target-zone {
+    position: absolute;
+
+    top: var(--slot-y);
+    left: var(--slot-x);
+
+    z-index: 5;
+
+    box-sizing: border-box;
+
+    min-width: 0;
+    min-height: 0;
+
+    padding: 4px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    border:
+        2px dashed #64b5f6;
+
+    background:
+        rgba(25,118,210,0.25);
+
+    border-radius: 8px;
+
+    color: white;
+
+    transform: translate(-50%, -50%);
+
+    transition:
+        opacity 0.2s,
+        transform 0.2s,
+        background 0.2s,
+        border-color 0.2s;
+
+    user-select: none;
+}
+
+
+/*
+   Only the CURRENT target is shown.
+*/
+
+.target-zone.target-hidden {
+    opacity: 0;
+
+    pointer-events: none;
+
+    visibility: hidden;
+}
+
+
+/*
+   Correct target disappears.
+*/
+
+.target-zone.correct {
+    opacity: 0;
+
+    pointer-events: none;
+
+    visibility: hidden;
+
+    transform:
+        translate(-50%, -50%) scale(0.7);
+}
+
+
+/*
+   Normal drag-over highlight.
+*/
+
+.target-zone.highlight {
+    background:
+        rgba(76,175,80,0.55);
+
+    border-color:
+        #81c784;
+
+    box-shadow:
+        0 0 20px rgba(76,175,80,0.45);
+}
+
+
+/* =========================================
+   TARGET POSITIONS
+========================================= */
+
+#assembly .target-zone[data-component="cpu"],
+#disassembly .target-zone[data-component="cpu"] {
+    --slot-x: 50%;
+    --slot-y: 35%;
+}
+
+#assembly .target-zone[data-component="thermal-paste"],
+#disassembly .target-zone[data-component="thermal-paste"] {
+    --slot-x: 50%;
+    --slot-y: 35%;
+}
+
+#assembly .target-zone[data-component="cpu-cooler"],
+#disassembly .target-zone[data-component="cpu-cooler"] {
+    --slot-x: 50%;
+    --slot-y: 35%;
+}
+
+#assembly .target-zone[data-component="ram"],
+#disassembly .target-zone[data-component="ram"] {
+    --slot-x: 88%;
+    --slot-y: 36%;
+}
+
+#assembly .target-zone[data-component="m2-ssd"],
+#disassembly .target-zone[data-component="m2-ssd"] {
+    --slot-x: 45%;
+    --slot-y: 59%;
+}
+
+#assembly .target-zone[data-component="gpu"],
+#disassembly .target-zone[data-component="gpu"] {
+    --slot-x: 40%;
+    --slot-y: 72%;
+}
+
+#assembly .target-zone[data-component="case-fan-cable"],
+#disassembly .target-zone[data-component="case-fan-cable"] {
+    --slot-x: 92%;
+    --slot-y: 8%;
+}
+
+#assembly .target-zone[data-component="24-pins"],
+#disassembly .target-zone[data-component="24-pins"] {
+    --slot-x: 109%;
+    --slot-y: 35%;
+}
+
+#assembly .target-zone[data-component="sata-data-cable"],
+#disassembly .target-zone[data-component="sata-data-cable"] {
+    --slot-x: 98%;
+    --slot-y: 74%;
+}
+
+#assembly .target-zone[data-component="front-panel"],
+#disassembly .target-zone[data-component="front-panel"] {
+    --slot-x: 108%;
+    --slot-y: 113%;
+}
+
+#assembly .target-zone[data-component="screw"],
+#disassembly .target-zone[data-component="screw"] {
+    --slot-x: 64%;
+    --slot-y: 12%;
+}
+
+#assembly .target-zone[data-component="8-pins"],
+#disassembly .target-zone[data-component="8-pins"] {
+    --slot-x: 15%;
+    --slot-y: 9%;
+}
+
+#assembly .target-zone[data-component="cpu"],
+#disassembly .target-zone[data-component="cpu"] {
+    width: 16%;
+    height: 16%;
+}
+
+#assembly .target-zone[data-component="thermal-paste"],
+#disassembly .target-zone[data-component="thermal-paste"] {
+    width: 12%;
+    height: 10%;
+}
+
+#assembly .target-zone[data-component="cpu-cooler"],
+#disassembly .target-zone[data-component="cpu-cooler"] {
+    width: 38%;
+    height: 38%;
+}
+
+#assembly .target-zone[data-component="ram"],
+#disassembly .target-zone[data-component="ram"] {
+    width: 17%;
+    height: 60%;
+
+    border-radius: 5px;
+}
+
+#assembly .target-zone[data-component="m2-ssd"],
+#disassembly .target-zone[data-component="m2-ssd"] {
+    width: 40%;
+    height: 8%;
+}
+
+#assembly .target-zone[data-component="gpu"],
+#disassembly .target-zone[data-component="gpu"] {
+    width: 82%;
+    height: 18%;
+}
+
+#assembly .target-zone[data-component="case-fan-cable"],
+#disassembly .target-zone[data-component="case-fan-cable"] {
+    width: 8%;
+    height: 8%;
+}
+
+#assembly .target-zone[data-component="24-pins"],
+#disassembly .target-zone[data-component="24-pins"] {
+    width: 8%;
+    height: 23%;
+}
+
+#assembly .target-zone[data-component="8-pins"],
+#disassembly .target-zone[data-component="8-pins"] {
+    width: 12%;
+    height: 9%;
+}
+
+#assembly .target-zone[data-component="sata-data-cable"],
+#disassembly .target-zone[data-component="sata-data-cable"] {
+    width: 7%;
+    height: 22%;
+}
+
+#assembly .target-zone[data-component="front-panel"],
+#disassembly .target-zone[data-component="front-panel"] {
+    width: 9%;
+    height: 7%;
+}
+
+#assembly .target-zone[data-component="screw"],
+#disassembly .target-zone[data-component="screw"] {
+    width: 8%;
+    height: 8%;
+}
+
+.disassembly-target.current-slot {
+    border-color: #81c784;
+    background: rgba(76, 175, 80, 0.35);
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+}
+
+.disassembly-target.current-slot[draggable="true"] {
+    cursor: grab;
+}
+
+.disassembly-target.current-slot[draggable="true"]:active,
+.disassembly-target.dragging {
+    cursor: grabbing;
+}
+
+.parts-grid.empty-drop-zone {
+    min-height: 145px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(129, 199, 132, 0.55);
+    border-radius: 12px;
+    background: rgba(76, 175, 80, 0.06);
+    transition:
+        border-color 0.15s,
+        background 0.15s,
+        box-shadow 0.15s;
+}
+
+.parts-grid.is-drop-target {
+    border-color: #81c784;
+    background: rgba(76, 175, 80, 0.16);
+    box-shadow: 0 0 18px rgba(76, 175, 80, 0.2);
+    outline: 2px dashed #81c784;
+    outline-offset: 4px;
+}
+
+.parts-empty-state {
+    margin: 0;
+    color: #c8e6c9;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.part-button.removed-part {
+    cursor: default;
+}
+
+
+/* =========================================
+   HARD MODE TARGETS
+========================================= */
+
+
+/*
+   HARD MODE:
+
+   The target exists for drag/drop detection,
+   but the player cannot see it.
+
+   No label.
+   No dashed box.
+   No background.
+*/
+
+.hard-mode .target-zone {
+    opacity: 0;
+
+    visibility: visible;
+
+    color: transparent;
+
+    border:
+        2px solid transparent;
+
+    background:
+        transparent;
+
+    box-shadow: none;
+
+    pointer-events: auto;
+}
+
+
+/*
+   The target only becomes visible while
+   the player is actually dragging over it.
+*/
+
+.hard-mode .target-zone.hard-hover {
+    opacity: 1;
+
+    color: transparent;
+
+    border:
+        2px dashed #81c784;
+
+    background:
+        rgba(76,175,80,0.22);
+
+    box-shadow:
+        0 0 25px rgba(76,175,80,0.35);
+}
+
+
+/*
+   Current hard target stays invisible.
+*/
+
+.hard-mode .target-zone.target-hidden {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   COMPONENT PANEL
+========================================= */
+
+.parts-panel {
+    padding: 18px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    background: linear-gradient(160deg, rgba(31, 53, 73, 0.96), rgba(18, 31, 45, 0.96));
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+}
+
+.parts-panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.parts-panel-kicker {
+    display: block;
+    margin-bottom: 4px;
+    color: #80cbc4;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.parts-panel h2 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.25;
+    text-transform: none;
+}
+
+.parts-panel-step {
+    flex: 0 0 auto;
+    padding: 7px 9px;
+    border: 1px solid rgba(79, 195, 247, 0.32);
+    border-radius: 8px;
+    background: rgba(79, 195, 247, 0.1);
+    color: #b3e5fc;
+    font-size: 12px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+.parts-panel .parts-panel-instruction {
+    margin: 0 0 12px;
+    color: #b8c9d5;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.tool-equipment {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(0, 0, 0, 0.16);
+}
+
+.tool-equipment h3 {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: #b0bec5;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+}
+
+.tool-equipment .tool-help {
+    grid-column: 1 / -1;
+    margin: -5px 0 0;
+    color: #aabac6;
+    font-size: 10px;
+    line-height: 1.3;
+}
+
+.tool-equip-button {
+    min-width: 0;
+    min-height: 48px;
+    margin: 0;
+    padding: 5px 7px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+    font: inherit;
+    font-size: 11px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.tool-equip-button img {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.tool-equip-button span {
+    min-width: 0;
+    line-height: 1.25;
+}
+
+.tool-equip-button:hover,
+.tool-equip-button:focus-visible {
+    border-color: #64b5f6;
+    background: rgba(33, 150, 243, 0.2);
+}
+
+.tool-equip-button.equipped {
+    border-color: #81c784;
+    background: rgba(76, 175, 80, 0.2);
+}
+
+.tool-equipment .tool-status {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: #c8e6c9;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   COMPONENT GRID
+========================================= */
+
+.parts-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+    align-content: start;
+}
+
+
+/* =========================================
+   ASSEMBLY COMPONENT BUTTON
+========================================= */
+
+.part-button {
+    position: relative;
+    min-width: 0;
+    min-height: 80px;
+
+    padding: 5px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 3px;
+
+    background: rgba(255, 255, 255, 0.055);
+
+    border:
+        1px solid rgba(255,255,255,0.11);
+
+    color: #eaf4fb;
+    font-size: 11px;
+    font-weight: 650;
+    line-height: 1.2;
+    cursor: grab;
+
+    user-select: none;
+
+    transition:
+        transform 0.15s,
+        background 0.15s,
+        opacity 0.15s,
+        border-color 0.15s,
+        box-shadow 0.15s;
+}
+
+.part-button:hover {
+    border-color: rgba(79, 195, 247, 0.65);
+    background: rgba(33,150,243,0.16);
+
+    transform:
+        translateY(-2px);
+}
+
+.part-button:active {
+    cursor: grabbing;
+}
+
+.part-button.dragging {
+    opacity: 0.45;
+
+    transform:
+        scale(0.95);
+}
+
+
+/*
+   SMALLER COMPONENT ICONS
+*/
+
+.part-button img {
+    max-width: 42px;
+    max-height: 38px;
+
+    background: transparent;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+.part-icon-stage {
+    width: 50px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 9px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.025));
+    pointer-events: none;
+}
+
+
+/*
+   Long cables should remain compact.
+*/
+
+.part-button[data-component="24-pins"] img,
+.part-button[data-component="8-pins"] img,
+.part-button[data-component="sata-data-cable"] img,
+.part-button[data-component="front-panel"] img {
+    max-width: 42px;
+    max-height: 34px;
+}
+
+
+/*
+   Thermal paste / screw should be smaller.
+*/
+
+.part-button[data-component="thermal-paste"] img,
+.part-button[data-component="screw"] img {
+    max-width: 38px;
+    max-height: 36px;
+}
+
+
+/*
+   RAM should stay narrow.
+*/
+
+.part-button[data-component="ram"] img {
+    max-width: 22px;
+    max-height: 38px;
+}
+
+
+.part-button.used {
+    display: none;
+}
+
+
+.part-button.wrong {
+    animation:
+        shake 0.3s;
+
+    background:
+        rgba(244,67,54,0.35);
+
+    border-color:
+        #ef5350;
+}
+
+.part-button.is-next {
+    border-color: #4fc3f7;
+    background: linear-gradient(145deg, rgba(2, 136, 209, 0.28), rgba(33, 150, 243, 0.12));
+    box-shadow: inset 0 0 0 1px rgba(79, 195, 247, 0.25), 0 0 18px rgba(3, 169, 244, 0.12);
+}
+
+.part-button.is-next::after {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    background: #0288d1;
+    color: #fff;
+    content: "NEXT";
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+}
+
+.part-button:focus-visible {
+    outline: 2px solid #80deea;
+    outline-offset: 2px;
+}
+
+
+@keyframes shake {
+
+    0% {
+        transform:
+            translateX(0);
+    }
+
+    25% {
+        transform:
+            translateX(-5px);
+    }
+
+    50% {
+        transform:
+            translateX(5px);
+    }
+
+    75% {
+        transform:
+            translateX(-5px);
+    }
+
+    100% {
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* =========================================
+   RESULTS
+========================================= */
+
+.results-box {
+    max-width: 500px;
+
+    margin: 50px auto;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.08);
+}
+
+.result-icon {
+    font-size: 70px;
+
+    margin-bottom: 20px;
+}
+
+.results-box p {
+    font-size: 20px;
+
+    margin: 15px;
+}
+
+
+/* =========================================
+   QUIZ
+========================================= */
+
+.quiz-header {
+    max-width: 800px;
+
+    margin: auto;
+
+    padding: 20px;
+}
+
+.quiz-header p {
+    margin: 8px;
+
+    color: #b0bec5;
+}
+
+.quiz-box {
+    max-width: 800px;
+
+    margin: 30px auto;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,0.08);
+}
+
+.quiz-box h2 {
+    line-height: 1.5;
+
+    margin-bottom: 30px;
+}
+
+.quiz-options {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.quiz-option {
+    min-height: 70px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    text-align: left;
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+}
+
+.quiz-option.correct {
+    background:
+        #2e7d32;
+}
+
+.quiz-option.wrong {
+    background:
+        #c62828;
+}
+
+.quiz-option:disabled {
+    cursor: default;
+
+    opacity: 0.9;
+
+    transform: none;
+}
+
+.quiz-feedback {
+    margin-top: 24px;
+    padding: 18px;
+
+    border: 1px solid rgba(255, 138, 128, 0.45);
+    border-radius: 12px;
+
+    background: rgba(198, 40, 40, 0.14);
+
+    color: #ffccbc;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.quiz-feedback[hidden] {
+    display: none;
+}
+
+.quiz-feedback button {
+    display: block;
+    margin: 16px 0 0 auto;
+}
+
+
+/* =========================================
+   QUIZ DIFFICULTY POPUP
+========================================= */
+
+.quiz-difficulty-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(5,10,15,0.82);
+
+    backdrop-filter:
+        blur(6px);
+}
+
+.quiz-difficulty-box {
+    width: min(600px, 100%);
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    background:
+        #172534;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.5);
+}
+
+.quiz-difficulty-box h2 {
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+.quiz-difficulty-box p {
+    color: #b0bec5;
+
+    margin-bottom: 25px;
+}
+
+.quiz-difficulty-buttons {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.quiz-difficulty-button {
+    min-height: 130px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    background:
+        rgba(255,255,255,0.08);
+}
+
+.quiz-difficulty-button strong {
+    font-size: 22px;
+}
+
+.quiz-difficulty-button small {
+    color: #cfd8dc;
+}
+
+.quiz-cancel-button {
+    margin-top: 15px;
+
+    background:
+        #455a64;
+
+    width: 100%;
+}
+
+
+/* =========================================
+   SETTINGS
+========================================= */
+
+.settings-box label {
+    display: block;
+
+    margin: 25px;
+
+    font-size: 20px;
+}
+
+.settings-box input {
+    display: block;
+
+    width: 80%;
+
+    margin: 10px auto;
+}
+
+
+/* =========================================
+   SCROLLBARS
+========================================= */
+
+.parts-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.parts-grid::-webkit-scrollbar-track {
+    background:
+        rgba(255,255,255,0.05);
+
+    border-radius: 10px;
+}
+
+.parts-grid::-webkit-scrollbar-thumb {
+    background:
+        rgba(144,202,249,0.5);
+
+    border-radius: 10px;
+}
+
+.parts-grid::-webkit-scrollbar-thumb:hover {
+    background:
+        rgba(144,202,249,0.8);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .assembly-game,
+    .disassembly-game {
+        grid-template-columns:
+            minmax(0, 1fr) 320px;
+    }
+
+    .pc-area {
+        overflow: hidden;
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .learn-layout {
+        grid-template-columns:
+            1fr;
+    }
+
+    .learn-preview {
+        position: static;
+    }
+
+    .component-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .assembly-game,
+    .disassembly-game {
+        grid-template-columns:
+            1fr;
+    }
+
+    .game-header {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .game-stats {
+        justify-content: center;
+    }
+
+    .game-header .gameplay-tip {
+        margin-right: auto;
+        margin-left: auto;
+
+        text-align: left;
+    }
+
+    .pc-area {
+        min-height: 500px;
+
+        justify-content: center;
+    }
+
+    .pc-board {
+        width: min(750px, 100%);
+    }
+
+    .parts-panel {
+        max-height: none;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .screen {
+        padding: 15px;
+    }
+
+    .mode-grid,
+    .difficulty-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .component-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .quiz-options {
+        grid-template-columns:
+            1fr;
+    }
+
+    .quiz-difficulty-buttons {
+        grid-template-columns:
+            1fr;
+    }
+
+    .pc-area {
+        min-height: 400px;
+    }
+
+    .target-zone {
+        font-size: 8px;
+
+        min-width: 0;
+        min-height: 0;
+
+        padding: 2px;
+    }
+
+    .part-button {
+        min-height: 90px;
+    }
+
+    .part-button {
+        min-height: 84px;
+    }
+
+}
