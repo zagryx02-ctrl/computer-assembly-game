@@ -1333,11 +1333,8 @@ button:active {
    HARD MODE:
 
    The target exists for drag/drop detection,
-   but the player cannot see it.
-
-   No label.
-   No dashed box.
-   No background.
+   but the player cannot see it, including while
+   dragging a component over it.
 */
 
 .hard-mode .target-zone {
@@ -1356,27 +1353,6 @@ button:active {
     box-shadow: none;
 
     pointer-events: auto;
-}
-
-
-/*
-   The target only becomes visible while
-   the player is actually dragging over it.
-*/
-
-.hard-mode .target-zone.hard-hover {
-    opacity: 1;
-
-    color: transparent;
-
-    border:
-        2px dashed #81c784;
-
-    background:
-        rgba(76,175,80,0.22);
-
-    box-shadow:
-        0 0 25px rgba(76,175,80,0.35);
 }
 
 
